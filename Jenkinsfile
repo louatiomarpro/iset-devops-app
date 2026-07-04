@@ -17,12 +17,14 @@ pipeline {
         }
 
         stage('Build Backend') {
-            steps {
-                dir('backend') {
-                    sh 'mvn clean package -DskipTests'
-                }
-            }
-        }
+    		steps {
+        		dir('backend') {
+            			withMaven(maven: 'maven3') {
+                			sh 'mvn clean package -DskipTests'
+            			}
+        		}
+    		}
+	}
 
         stage('Build Images Docker') {
             steps {
