@@ -61,7 +61,7 @@ pipeline {
                     docker stop iset-frontend || true
                     docker rm   iset-backend  || true
                     docker rm   iset-frontend || true
-                    docker run -d --name iset-backend  -p 8080:8080 ${BACK_IMAGE}:latest
+                    docker run -d --name iset-backend  -p 8090:8080 ${BACK_IMAGE}:latest
                     docker run -d --name iset-frontend -p 80:80     ${FRONT_IMAGE}:latest
                 '''
             }
