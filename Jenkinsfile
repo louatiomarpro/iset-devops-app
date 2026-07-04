@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'maven3'
+    }
+
     environment {
         DOCKER_HUB_USER = 'jmayeul'
         BACK_IMAGE       = 'jmayeul/iset-devops-backend'
@@ -17,14 +21,12 @@ pipeline {
         }
 
         stage('Build Backend') {
-    		steps {
-        		dir('backend') {
-            			withMaven(maven: 'maven3') {
-                			sh 'mvn clean package -DskipTests'
-            			}
-        		}
-    		}
-	}
+            steps {
+                dir('backend') {
+                    sh 'mvn clean package -DskipTests'
+                }
+            }
+        }
 
         stage('Build Images Docker') {
             steps {
