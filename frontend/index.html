@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>ISET Sfax DevOps</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 60px;
+      background: linear-gradient(135deg, #1B6FB5, #2E8B57);
+      color: white;
+      margin: 0;
+    }
+    h1 { font-size: 2.5em; margin-bottom: 10px; }
+    .card {
+      background: rgba(255,255,255,0.15);
+      border-radius: 16px;
+      padding: 30px;
+      margin: 30px auto;
+      max-width: 500px;
+    }
+    .status { font-size: 1.1em; margin-top: 15px; }
+    .badge {
+      display: inline-block;
+      background: #2E8B57;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>🚀 ISET Sfax — CI/CD Pipeline</h1>
+  <div class="card">
+    <h2>Frontend Nginx</h2>
+    <p>Déployé automatiquement par <strong>Jenkins</strong></p>
+    <div class="badge">✅ Build automatique</div>
+    <div class="status" id="api-status">⏳ Connexion au backend...</div>
+  </div>
+  <script>
+    fetch('http://localhost:8080/api/status')
+      .then(r => r.text())
+      .then(data => {
+        document.getElementById('api-status').innerHTML =
+          '✅ Backend: ' + data;
+      })
+      .catch(() => {
+        document.getElementById('api-status').innerHTML =
+          '⚠️ Backend: démarrage en cours...';
+      });
+  </script>
+</body>
+</html>
