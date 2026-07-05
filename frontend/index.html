@@ -41,7 +41,7 @@
     <div class="status" id="api-status">⏳ Connexion au backend...</div>
   </div>
   <script>
-    fetch('http://localhost:8080/api/status')
+    fetch('http://localhost:8090/api/status')
       .then(r => r.text())
       .then(data => {
         document.getElementById('api-status').innerHTML =
