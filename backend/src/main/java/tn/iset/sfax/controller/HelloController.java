@@ -9,7 +9,7 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String hello() {
-        return "Bonjour depuis le Backend — ISET Sfax DevOps ! Automatique 4";
+        return "Bonjour depuis le Backend — ISET Sfax DevOps ! Automatique 5";
     }
 
     @GetMapping("/status")
